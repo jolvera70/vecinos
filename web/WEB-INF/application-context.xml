@@ -21,10 +21,7 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-    <bean id="accessDeniedHandler"
-	class="com.jb.vecinos.security.MyAccessDeniedHandler">
-	<property name="accessDeniedUrl" value="403" />
-   </bean>
+
 
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
