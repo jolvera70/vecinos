@@ -2,15 +2,10 @@
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/src/main/java/com/jb/vecinos/security/MyAccessDeniedHandler.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/jdbc.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/jdbc.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/persistence.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/application-context.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/classes/jdbc.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/web/WEB-INF/classes/jdbc.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/classes/persistence.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/web/WEB-INF/classes/persistence.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/web/jdbc.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/pages/views/jsp/403.jsp" charset="UTF-8" />
   </component>
 </project>
 

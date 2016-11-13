@@ -10,12 +10,14 @@
 
     <bean id="accessDeniedHandler"
           class="com.jb.vecinos.security.MyAccessDeniedHandler">
-        <property name="accessDeniedUrl" value="/403" />
+        <property name="accessDeniedUrl" value="403" />
     </bean>
 
     <security:http auto-config="true">
-        <security:intercept-url pattern="/home*" access="ROLE_USER,ROLE_ADMIN" />
-        <security:intercept-url pattern="/admin*" access="ROLE_ADMIN" />
+        <security:intercept-url pattern="/home" access="ROLE_USER,ROLE_ADMIN,ROLE_ROOT" />
+        <security:intercept-url pattern="/user*" access="ROLE_USER,ROLE_ROOT" />
+        <security:intercept-url pattern="/usAdm*" access="ROLE_USER,ROLE_ADMIN,ROLE_ROOT" />
+        <security:intercept-url pattern="/admin*" access="ROLE_ADMIN,ROLE_ROOT" />
         <security:form-login login-page="/login" default-target-url="/home"
                              username-parameter="username"
                              password-parameter="password"
@@ -29,9 +31,9 @@
         <security:authentication-provider >
             <security:jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query=
-                                       "select username,password from users where username=?"
+                                       "select username,password,enabled from users where username=?"
                                authorities-by-username-query=
-                                       "select username, role from users where username =?  " />
+                                       "select username, rol from user_roles where username =?  " />
         </security:authentication-provider>
     </security:authentication-manager>
 
