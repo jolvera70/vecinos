@@ -1,4 +1,4 @@
-package com.jb.vecinos;
+package com.jb.vecinos.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.security.core.Authentication;

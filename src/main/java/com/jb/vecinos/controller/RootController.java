@@ -1,6 +1,8 @@
-package com.jb.vecinos;
+package com.jb.vecinos.controller;
 
+import com.jb.vecinos.services.RootService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -8,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -18,6 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class RootController {
 
     final static Logger logger = Logger.getLogger(RootController.class);
+    final static String jspPath  = "root/";
+
+    @Autowired
+    private RootService rootService;
 
     @RequestMapping(value={"","/","/login"}, method = RequestMethod.GET)
     public String login(Model model)
@@ -48,6 +53,12 @@ public class RootController {
     public String loginError(Model model) {
         model.addAttribute("error", "Invalid user or password");
         return "login";
+
+    }
+
+    @RequestMapping(value="/rootColonyConfiguration", method = RequestMethod.GET)
+    public String addAdminUser(Model model) {
+        return jspPath+"colonyConfiguration";
 
     }
 
