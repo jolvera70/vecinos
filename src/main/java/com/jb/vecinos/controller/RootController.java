@@ -66,9 +66,7 @@ public class RootController {
     @RequestMapping(value="/rootColonyConfiguration", method = RequestMethod.GET)
     public String addAdminUser(Model model) {
         List<Colony> colonyList =  colonyService.listColony();
-        for(Colony c:colonyList){
-            logger.info(c.getName());
-        }
+        model.addAttribute("colonyList",colonyList);
         return jspPath+"colonyConfiguration";
 
     }
