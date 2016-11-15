@@ -15,6 +15,10 @@
 <h2>Submitted Colony Information</h2>
 <table>
     <tr>
+        <td>idColony</td>
+        <td>${idColony}</td>
+    </tr>
+    <tr>
         <td>Name</td>
         <td>${name}</td>
     </tr>

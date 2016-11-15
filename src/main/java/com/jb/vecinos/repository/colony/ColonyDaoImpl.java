@@ -7,17 +7,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * Created by jolvera on 13/11/2016.
  */
-@Repository
-@Transactional
+@Repository(value = "colonyDao")
 public class ColonyDaoImpl implements ColonyDao{
 
     final static Logger logger = Logger.getLogger(ColonyDaoImpl.class);
-
-    @PersistenceContext
     private EntityManager em;
 
     @PersistenceContext
@@ -26,12 +24,31 @@ public class ColonyDaoImpl implements ColonyDao{
     }
 
     @Transactional(readOnly = false)
+    @SuppressWarnings("unchecked")
     public void add(Colony colony) {
         try{
-            logger.info("in DAO insert "+colony.getName());
+            logger.info("in DAO insert "+colony.getName()+":"+colony.getAddress());
             em.persist(colony);
+            em.flush();
         }catch(Exception e){
             logger.error(e);
         }
+    }
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+    public List<Colony> listColony()
+    {
+        List<Colony> list = null;
+        try
+        {
+            list = em.createQuery("select c from Colony c order by c.idColony")
+                    .getResultList();
+        }
+        catch(Exception e)
+        {
+            logger.error(e);
+        }
+        return list;
     }
 }
