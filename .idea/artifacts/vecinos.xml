@@ -9,7 +9,7 @@
           <element id="jpa-descriptors" facet="vecinos/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Spring-4.3.3.RELEASE" />
+          <element id="library" level="project" name="Spring-4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:3.2.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.2.8.RELEASE" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
