@@ -8,15 +8,15 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-    <title>Colony</title>
+    <title>Colonia</title>
 </head>
 <body>
 
-<h2>Submitted Colony Information</h2>
+<h2>Submitted Colonia Information</h2>
 <table>
     <tr>
-        <td>idColony</td>
-        <td>${idColony}</td>
+        <td>idColonia</td>
+        <td>${idColonia}</td>
     </tr>
     <tr>
         <td>Name</td>

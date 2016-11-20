@@ -10,12 +10,12 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %><html>
 <head>
-    <title>Colony Configuration</title>
+    <title>Colonia Configuration</title>
 </head>
 <body>
-<a href="rootColoniaForm">Add Colony</a>
+<a href="rootColoniaForm">Add Colonia</a>
 
-<h3>Colony List</h3>
+<h3>Colonia List</h3>
 <c:if test="${!empty coloniaList}">
     <table class="tg">
         <tr>
@@ -24,7 +24,7 @@
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${colonyList}" var="colony">
+        <c:forEach items="${coloniaList}" var="colonia">
             <tr>
                 <td>${colonia.idColonia}</td>
                 <td>${colonia.nombre}</td>

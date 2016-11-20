@@ -35,19 +35,14 @@ public class ColoniaDaoImpl implements ColoniaDao {
         }
     }
 
-    @Override
-    public List<Colonia> listColonia() {
-        return null;
-    }
-
     @Transactional(readOnly = true)
     @SuppressWarnings("unchecked")
-    public List<Colonia> listColony()
+    public List<Colonia> listColonia()
     {
         List<Colonia> list = null;
         try
         {
-            list = em.createQuery("select c from Colony c order by c.idColony")
+            list = em.createQuery("select c from Colonia c order by c.idColonia")
                     .getResultList();
         }
         catch(Exception e)

@@ -34,14 +34,14 @@ public class ColoniaController {
     @RequestMapping(value="/rootAddColonia", method = RequestMethod.POST)
     public String addStudent(@ModelAttribute("SpringWeb")Colonia colonia,
                              ModelMap model) {
-        logger.info("insert to colony");
+        logger.info("insert to colonia");
         try
         {
             coloniaService.insertColonia(colonia);
         }
         catch (Exception e)
         {
-            logger.error("ERROR INSERT COLONY "+e);
+            logger.error("ERROR INSERT Colonia "+e);
         }
         model.addAttribute("Nombre", colonia.getNombre());
         return jspPath+"coloniaResult";
