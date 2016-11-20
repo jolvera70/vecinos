@@ -145,10 +145,10 @@
             </li>
 
             <li>
-                <a class="active-menu"  href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                <a class="active-menu"  href="rootColoniaConfiguration"><i class="fa fa-dashboard "></i>Colonia</a>
             </li>
             <li>
-                <a href="ui.html"><i class="fa fa-venus "></i>UI Elements </a>
+                <a href="rootColoniaConfiguration"><i class="fa fa-venus "></i>Vecinos</a>
 
             </li>
 
