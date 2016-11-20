@@ -5,6 +5,8 @@ import com.jb.vecinos.services.RootService;
 import com.jb.vecinos.services.colonia.ColoniaService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,16 +16,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Locale;
 
 
 /**
  * Created by jolvera on 26/10/2016.
  */
+@SuppressWarnings("resource")
 @Controller
 public class RootController {
 
     final static Logger logger = Logger.getLogger(RootController.class);
     final static String jspPath  = "root/";
+
+    @Autowired
+    private MessageSource messageSource;
+
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @Autowired
     private RootService rootService;
@@ -57,8 +68,8 @@ public class RootController {
     }
 
     @RequestMapping(value="/loginError", method = RequestMethod.GET)
-    public String loginError(Model model) {
-        model.addAttribute("error", "Invalid user or password");
+    public String loginError(Model model,Locale locale) {
+        model.addAttribute("error", messageSource.getMessage("msg.login.error",null,locale));
         return "login";
 
     }

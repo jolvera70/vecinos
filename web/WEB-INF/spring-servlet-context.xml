@@ -20,4 +20,16 @@
             <property name="prefix" value="/WEB-INF/pages/views/jsp/"></property>
             <property name="suffix" value=".jsp"></property>
         </bean>
+
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="es" />
+    </bean>
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="language"/>
+        </bean>
+    </mvc:interceptors>
+
 </beans>
