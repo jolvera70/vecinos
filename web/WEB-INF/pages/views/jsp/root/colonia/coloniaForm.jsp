@@ -13,16 +13,13 @@
 <body>
 
 <h2>Colony Information</h2>
-<form:form method="POST" action="rootAddColony">
+<form:form method="POST" action="rootAddColonia">
     <table>
         <tr>
-            <td><form:label path="name">Name</form:label></td>
-            <td><form:input path="name" /></td>
+            <td><form:label path="nombre">Nombre</form:label></td>
+            <td><form:input path="nombre" /></td>
         </tr>
-        <tr>
-            <td><form:label path="address">Address</form:label></td>
-            <td><form:input path="address" /></td>
-        </tr>
+
         <tr>
             <td colspan="2">
                 <input type="submit" value="Submit"/>

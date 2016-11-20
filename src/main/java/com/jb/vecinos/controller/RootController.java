@@ -1,8 +1,8 @@
 package com.jb.vecinos.controller;
 
-import com.jb.vecinos.entities.Colony;
+import com.jb.vecinos.entities.Colonia;
 import com.jb.vecinos.services.RootService;
-import com.jb.vecinos.services.colony.ColonyService;
+import com.jb.vecinos.services.colonia.ColoniaService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,7 +29,7 @@ public class RootController {
     private RootService rootService;
 
     @Autowired
-    private ColonyService colonyService;
+    private ColoniaService coloniaService;
 
     @RequestMapping(value={"","/","/login"}, method = RequestMethod.GET)
     public String login(Model model)
@@ -63,11 +63,11 @@ public class RootController {
 
     }
 
-    @RequestMapping(value="/rootColonyConfiguration", method = RequestMethod.GET)
+    @RequestMapping(value="/rootColoniaConfiguration", method = RequestMethod.GET)
     public String addAdminUser(Model model) {
-        List<Colony> colonyList =  colonyService.listColony();
-        model.addAttribute("colonyList",colonyList);
-        return jspPath+"colonyConfiguration";
+        List<Colonia> coloniaList =  coloniaService.listColonia();
+        model.addAttribute("coloniaList",coloniaList);
+        return jspPath+"coloniaConfiguration";
 
     }
 

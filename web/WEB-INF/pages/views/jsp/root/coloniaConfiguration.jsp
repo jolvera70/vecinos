@@ -13,25 +13,23 @@
     <title>Colony Configuration</title>
 </head>
 <body>
-<a href="rootColonyForm">Add Colony</a>
+<a href="rootColoniaForm">Add Colony</a>
 
 <h3>Colony List</h3>
-<c:if test="${!empty colonyList}">
+<c:if test="${!empty coloniaList}">
     <table class="tg">
         <tr>
-            <th width="80">ID Colony</th>
+            <th width="80">ID Colonia</th>
             <th width="120">Name</th>
-            <th width="120">Address</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${colonyList}" var="colony">
             <tr>
-                <td>${colony.idColony}</td>
-                <td>${colony.name}</td>
-                <td>${colony.address}</td>
-                <td><a href="<c:url value='/edit/${colony.idColony}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${colony.idColony}' />" >Delete</a></td>
+                <td>${colonia.idColonia}</td>
+                <td>${colonia.nombre}</td>
+                <td><a href="<c:url value='/edit/${colonia.idColonia}' />" >Edit</a></td>
+                <td><a href="<c:url value='/remove/${colonia.idColonia}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

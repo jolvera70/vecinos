@@ -5,12 +5,12 @@
     <title></title>
 </head>
 <body>
-welcom home admin
+welcome home admin
 
 <a href="admin_home">admin_home</a></br>
 <a href="user_home">user_home</a></br>
 <a href="usAdm_home">usAdm_home</a></br>
-<a href="rootColonyConfiguration">Colony Configuration</a></br>
+<a href="rootColoniaConfiguration">Colonia Configuration</a></br>
 
 </body>
 </html>

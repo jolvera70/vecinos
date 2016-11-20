@@ -1,4 +1,137 @@
-CREATE TABLE `users` (
+-- phpMyAdmin SQL Dump
+-- version 4.5.2
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 20-11-2016 a las 04:41:03
+-- Versión del servidor: 5.7.9
+-- Versión de PHP: 7.0.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `vecinos`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cat_admin_calle`
+--
+
+DROP TABLE IF EXISTS `cat_admin_calle`;
+CREATE TABLE IF NOT EXISTS `cat_admin_calle` (
+  `id_cat_calle` int(11) NOT NULL AUTO_INCREMENT,
+  `desc_calle` varchar(100) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_colonia` int(11) NOT NULL,
+  PRIMARY KEY (`id_cat_calle`),
+  KEY `id_cat_calle` (`id_cat_calle`),
+  KEY `id_cat_calle_2` (`id_cat_calle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cat_estatus`
+--
+
+DROP TABLE IF EXISTS `cat_estatus`;
+CREATE TABLE IF NOT EXISTS `cat_estatus` (
+  `id_cat_estatus` tinyint(2) NOT NULL AUTO_INCREMENT,
+  `desc_estatus` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_cat_estatus`),
+  KEY `id_cat_estatus` (`id_cat_estatus`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `colonia`
+--
+
+DROP TABLE IF EXISTS `colonia`;
+CREATE TABLE IF NOT EXISTS `colonia` (
+  `id_colonia` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `id_zona` int(11) DEFAULT NULL,
+  `id_ciudad` int(11) NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `id_pais` int(11) NOT NULL,
+  `cp` varchar(10) DEFAULT NULL,
+  `fecha_registro` timestamp NOT NULL,
+  PRIMARY KEY (`id_colonia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `colonia_vecino`
+--
+
+DROP TABLE IF EXISTS `colonia_vecino`;
+CREATE TABLE IF NOT EXISTS `colonia_vecino` (
+  `id_colonia_vecino` int(11) NOT NULL AUTO_INCREMENT,
+  `id_colonia` int(11) NOT NULL,
+  `id_vecino` int(11) NOT NULL,
+  `fecha_registro` timestamp NOT NULL,
+  PRIMARY KEY (`id_colonia_vecino`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturacion`
+--
+
+DROP TABLE IF EXISTS `facturacion`;
+CREATE TABLE IF NOT EXISTS `facturacion` (
+  `id_factura` int(11) NOT NULL AUTO_INCREMENT,
+  `rfc` varchar(20) NOT NULL,
+  `direccion` varchar(200) NOT NULL,
+  `id_cat_estatus` tinyint(2) NOT NULL,
+  `fecha_registro` timestamp NOT NULL,
+  PRIMARY KEY (`id_factura`),
+  KEY `id_factura` (`id_factura`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inquilino`
+--
+
+DROP TABLE IF EXISTS `inquilino`;
+CREATE TABLE IF NOT EXISTS `inquilino` (
+  `id_inquilino` int(11) NOT NULL AUTO_INCREMENT,
+  `inq_nombre` varchar(50) NOT NULL,
+  `inq_apellido_paterno` varchar(50) NOT NULL,
+  `inq_apellido_materno` varchar(50) NOT NULL,
+  `num_celular` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `requiere_factura` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `id_factura` int(11) NOT NULL,
+  `id_cat_estatus` tinyint(2) NOT NULL,
+  `fecha_registro` timestamp NOT NULL,
+  PRIMARY KEY (`id_inquilino`),
+  KEY `id_inquilino` (`id_inquilino`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `iduser` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
@@ -7,17 +140,81 @@ CREATE TABLE `users` (
   PRIMARY KEY (`iduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='User of diferrent types';
 
-CREATE TABLE `user_roles` (
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`iduser`, `username`, `password`, `name`, `enabled`) VALUES
+(1, 'jolvera', 'jolvera', 'jorge', 1),
+(2, 'bvelasco', 'bvelasco', 'Beatriz', 1),
+(3, 'jorge', 'jorge', 'Jorge', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE IF NOT EXISTS `user_roles` (
   `user_role_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `rol` varchar(45) NOT NULL,
   PRIMARY KEY (`user_role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `colony` (
-  `idColony` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idColony`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+--
+-- Volcado de datos para la tabla `user_roles`
+--
 
+INSERT INTO `user_roles` (`user_role_id`, `username`, `rol`) VALUES
+(1, 'jolvera', 'ROLE_ADMIN'),
+(2, 'bvelasco', 'ROLE_USER'),
+(3, 'jorge', 'ROLE_ROOT');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vecino`
+--
+
+DROP TABLE IF EXISTS `vecino`;
+CREATE TABLE IF NOT EXISTS `vecino` (
+  `id_vecino` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `apellido_paterno` varchar(50) NOT NULL,
+  `apellido_materno` varchar(50) DEFAULT NULL,
+  `id_cat_calle` int(11) NOT NULL,
+  `num_casa` varchar(10) NOT NULL,
+  `num_celular` varchar(10) DEFAULT NULL,
+  `num_telefono` varchar(10) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `requiere_factura` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `casa_rentada` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `es_visible` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `id_inquilino` int(11) DEFAULT NULL,
+  `id_factura` int(11) DEFAULT NULL,
+  `id_cat_estatus` tinyint(2) NOT NULL,
+  `ruta_foto` varchar(200) DEFAULT NULL,
+  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_vecino`),
+  KEY `id_factura` (`id_factura`),
+  KEY `id_inquilino` (`id_inquilino`),
+  KEY `id_cat_calle` (`id_cat_calle`),
+  KEY `id_cat_estatus` (`id_cat_estatus`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `vecino`
+--
+ALTER TABLE `vecino`
+  ADD CONSTRAINT `vecino_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `facturacion` (`id_factura`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `vecino_ibfk_2` FOREIGN KEY (`id_inquilino`) REFERENCES `inquilino` (`id_inquilino`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
