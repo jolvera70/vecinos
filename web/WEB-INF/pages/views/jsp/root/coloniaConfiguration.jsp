@@ -5,34 +5,61 @@
   Time: 11:01 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %><html>
-<head>
-    <title>Colonia Configuration</title>
-</head>
-<body>
-<a href="rootColoniaForm">Add Colonia</a>
 
-<h3>Colonia List</h3>
-<c:if test="${!empty coloniaList}">
-    <table class="tg">
-        <tr>
-            <th width="80">ID Colonia</th>
-            <th width="120">Name</th>
-            <th width="60">Edit</th>
-            <th width="60">Delete</th>
-        </tr>
-        <c:forEach items="${coloniaList}" var="colonia">
-            <tr>
-                <td>${colonia.idColonia}</td>
-                <td>${colonia.nombre}</td>
-                <td><a href="<c:url value='/edit/${colonia.idColonia}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${colonia.idColonia}' />" >Delete</a></td>
-            </tr>
-        </c:forEach>
-    </table>
-</c:if>
+<%@ page session="false" %><html>
+<%@ include file="/WEB-INF/pages/views/jsp/head.jsp" %>
+<body>
+<div id="wrapper">
+<%@ include file="/WEB-INF/pages/views/jsp/root/leftPanel.jsp" %>
+    <div id="page-wrapper" class="page-wrapper-cls">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line"><spring:message code="label.commons.colony" text="default text" /></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <c:if test="${!empty coloniaList}">
+                    <div class="col-md-6">
+                        <!--    Context Classes  -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <spring:message code="label.commons.colonies" text="default text" />     <a href="rootColoniaForm"><i class="fa fa-plus-circle "></i><spring:message code="label.colony.add" text="default text" /></a>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th><spring:message code="label.commons.name" text="default text" /></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${coloniaList}" var="colonia">
+                                            <tr class="success">
+                                                <td>${colonia.idColonia}</td>
+                                                <td>${colonia.nombre}</td>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  end  Context Classes  -->
+                    </div>
+                </div>
+                </c:if>
+                </div>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+</div>
+<%@ include file="/WEB-INF/pages/views/jsp/footer.jsp" %>
+<%@ include file="/WEB-INF/pages/views/jsp/jquery.jsp" %>
 </body>
 </html>

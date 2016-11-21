@@ -26,12 +26,12 @@
 </div>
 <div id="page-wrapper" class="page-wrapper-cls">
     <div class="row">
-        <div class="col-md-3"><spring:message code="label.login.language" text="default text" /> : <a href="?language=en_US">English</a>|<a href="?language=es_MX">Espanol</a></div>
+        <div class="col-md-3"></div>
         <div class="col-md-3">
+            <a href="?language=en_US">English</a>|<a href="?language=es_MX">Espanol</a>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <spring:message code="label.login.header" text="default text" />
-
                 </div>
                 <div class="panel-body">
                     <p>
