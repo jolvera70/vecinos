@@ -16,7 +16,7 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line"><spring:message code="label.commons.neighbor" text="default text"/></h1>
+                    <h1 class="page-head-line"><spring:message code="label.admin.config.title" text="default text"/></h1>
                 </div>
             </div>
             <div class="row">
@@ -25,24 +25,25 @@
                         <!--    Context Classes  -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <spring:message code="label.commons.neighbors" text="default text"/> <a
-                                    href="adminVecinoForm"><i class="fa fa-plus-circle "></i><spring:message
-                                    code="label.neighbor.add" text="default text"/></a>
+                                <spring:message code="label.admin.streets.title" text="default text"/>
+                                <a href="adminConfigCalleForm"><i class="fa fa-plus-circle "></i>
+                                    <spring:message code="label.admin.street.add" text="default text"/></a>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
+
                                         <tr>
                                             <th>#</th>
-                                            <th><spring:message code="label.commons.name" text="default text"/></th>
+                                            <th><spring:message code="label.admin.street.name" text="default text"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${vecinoList}" var="vecino">
+                                        <c:forEach items="${calleList}" var="calle">
                                             <tr class="success">
-                                                <td>${vecino.idVecino}</td>
-                                                <td>${vecino.nombre}</td>
+                                                <td>${calle.idCalle}</td>
+                                                <td>${calle.descCalle}</td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>

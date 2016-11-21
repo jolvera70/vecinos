@@ -65,7 +65,12 @@
             </li>
 
             <li>
-                <a class="active-menu" href="adminVecinosHome"><i class="fa fa-venus "></i><spring:message code="label.root.menu.neighbors" text="default text" /></a>
+                <a class="active-menu" href="homeAdmin"><i class="fa fa-venus "></i><spring:message code="label.root.menu.neighbors" text="default text" /></a>
+
+            </li>
+
+            <li>
+                <a href="configAdmin"><i class="fa fa-venus "></i><spring:message code="label.admin.menu.config" text="default text" /></a>
 
             </li>
 

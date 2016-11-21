@@ -1,6 +1,9 @@
 package com.jb.vecinos.controller.admin;
 
+import com.jb.vecinos.entities.Calle;
+import com.jb.vecinos.entities.Colonia;
 import com.jb.vecinos.entities.Vecino;
+import com.jb.vecinos.services.calle.CalleService;
 import com.jb.vecinos.services.vecino.VecinosService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by jolvera on 12/11/2016.
+ * Modify by bvelasco on 20/11/2016.
  */
 @Controller
 public class AdminController {
@@ -23,10 +27,20 @@ public class AdminController {
     @Autowired
     private VecinosService vecinosService;
 
-    @RequestMapping(value="/adminVecinosHome", method = RequestMethod.GET)
+    @RequestMapping(value="/homeAdmin", method = RequestMethod.GET)
     public String addAdminVecino(Model model) {
         List<Vecino> vecinosList =  vecinosService.listVecino();
         model.addAttribute("vecinosList",vecinosList);
-        return jspPath+"vecinosHome";
+        return jspPath+"homeAdmin";
+    }
+
+    @Autowired
+    private CalleService calleService;
+
+    @RequestMapping(value="/configAdmin", method = RequestMethod.GET)
+    public String configAdmin(Model model) {
+        List<Calle> calleList =  calleService.listCalle();
+        model.addAttribute("calleList",calleList);
+        return jspPath+"config/configAdmin";
     }
 }
