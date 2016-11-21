@@ -26,7 +26,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <spring:message code="label.admin.streets.title" text="default text"/>
-                                <a href="configCalleForm"><i class="fa fa-plus-circle "></i>
+                                <a href="calleForm"><i class="fa fa-plus-circle "></i>
                                     <spring:message code="label.admin.street.add" text="default text"/></a>
                             </div>
                             <div class="panel-body">
@@ -35,18 +35,10 @@
                                         <thead>
 
                                         <tr>
-                                            <th>#</th>
-                                            <th><spring:message code="label.admin.street.name" text="default text"/></th>
+                                            <th><spring:message code="label.commons.aplication.exito" text="default text"/></th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <c:forEach items="${calleList}" var="calle">
-                                            <tr class="success">
-                                                <td>${calle.idCalle}</td>
-                                                <td>${calle.descCalle}</td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
+
                                     </table>
                                 </div>
                             </div>

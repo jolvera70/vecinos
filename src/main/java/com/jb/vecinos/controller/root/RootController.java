@@ -59,7 +59,7 @@ public class RootController {
             }
             else if(authority.getAuthority().equalsIgnoreCase("ROLE_ADMIN"))
             {
-                return jspPathAdmin+"vecinosHome";
+                return jspPathAdmin+"homeAdmin";
             }
             else if(authority.getAuthority().equalsIgnoreCase("ROLE_USER"))
             {
