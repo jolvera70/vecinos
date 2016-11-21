@@ -42,7 +42,7 @@ public class ColoniaDaoImpl implements ColoniaDao {
         List<Colonia> list = null;
         try
         {
-            list = em.createQuery("select c from Colonia c order by c.idColonia")
+            list = em.createQuery("select c from Colonia c order by c.id_colonia")
                     .getResultList();
         }
         catch(Exception e)

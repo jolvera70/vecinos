@@ -5,7 +5,8 @@
   Time: 11:01 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page session="false" %>
+<%@ page session="true" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <%@ include file="/WEB-INF/pages/views/jsp/head.jsp" %>
 <body>
@@ -27,10 +28,50 @@
                         <div class="panel-body">
                             <form:form method="POST" action="rootAddColonia">
                                 <div class="form-group">
-                                    <label for="nombre"><spring:message code="label.commons.name" text="default text" /></label>
-                                    <input type="nombre" class="form-control" id="nombre" placeholder="<spring:message code="label.commons.name" text="default text" />" />
+                                    <spring:message code='label.colony.name' text="default text" var="name"/>
+                                    <form:label path="nombre"/>${name}</label>
+                                    <form:input path="nombre" class="form-control" id="nombre" placeholder="${name}"/>
                                 </div>
-                                <button type="submit" class="btn btn-default" value="submit"><spring:message code="label.commons.submit" text="default text" /></button>
+                                <div class="form-group">
+                                    <spring:message code='label.colony.country' text="default text" var="country"/>
+                                    <label>${country}</label>
+                                    <select class="form-control">
+                                        <c:forEach items="${catalogoPais}" var="countryelement">
+                                            <option value="0 >${country}</option>
+                                            <c:if test="${countryelement.desc_pais == 'MEXICO'}">
+                                                <option value="${countryelement.id_pais}" selected>${countryelement.desc_pais}</option>
+                                            </c:if>
+                                            <option value="${countryelement.id_pais}">${countryelement.desc_pais}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <spring:message code='label.colony.country' text="default text" var="country"/>
+                                    <form:label path="idPais"/>${country}</label>
+                                    <form:input path="idPais" class="form-control" id="idPais" placeholder="${country}" />
+                                </div>
+                                <div class="form-group">
+                                    <spring:message code='label.colony.state' text="default text" var="state"/>
+                                    <form:label path="idEstado"/>${state}</label>
+                                    <form:input path="idEstado" class="form-control" id="idEstado" placeholder="${state}" />
+                                </div>
+                                <div class="form-group">
+                                    <spring:message code='label.colony.city' text="default text" var="city"/>
+                                    <form:label path="idCiudad"/>${city}</label>
+                                    <form:input path="idCiudad" class="form-control" id="idCiudad" placeholder="${city}" />
+                                </div>
+                                <div class="form-group">
+                                    <spring:message code='label.colony.zipcode' text="default text" var="zipcode"/>
+                                    <form:label path="cp"/>${zipcode}</label>
+                                    <form:input path="cp" class="form-control" id="cp" placeholder="${zipcode}" />
+                                </div>
+                                <div class="form-group">
+                                    <spring:message code='label.colony.zone' text="default text" var="zone"/>
+                                    <form:label path="idZona"/>${zone}</label>
+                                    <form:input path="idZona" class="form-control" id="idZona" placeholder="${zone}" />
+                                </div>
+                                <button type="submit" class="btn btn-default" value="submit"><spring:message code="label.commons.submit" text="default text"/></button>
                             </form:form>
                         </div>
                         <!-- /. PAGE INNER  -->

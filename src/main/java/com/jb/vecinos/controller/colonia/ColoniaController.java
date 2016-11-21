@@ -3,6 +3,7 @@ package com.jb.vecinos.controller.colonia;
 
 import com.jb.vecinos.entities.Colonia;
 import com.jb.vecinos.services.colonia.ColoniaService;
+import com.jb.vecinos.services.pais.PaisService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,28 +23,29 @@ public class ColoniaController {
     @Autowired
     private ColoniaService coloniaService;
 
-    final static Logger logger = Logger.getLogger(ColoniaController.class);
-    final static String jspPath  = "root/colonia/";
+    @Autowired
+    private PaisService paisService;
 
-    @RequestMapping(value="/rootColoniaForm", method = RequestMethod.GET)
+    final static Logger logger = Logger.getLogger(ColoniaController.class);
+    final static String jspPath = "root/colonia/";
+
+    @RequestMapping(value = "/rootColoniaForm", method = RequestMethod.GET)
     public ModelAndView addAdminUser(Model model) {
-        return new ModelAndView(jspPath+"coloniaForm", "command", new Colonia());
+        model.addAttribute("catalogoPais", paisService.getCatalogo());
+        return new ModelAndView(jspPath + "coloniaForm", "command", new Colonia());
 
     }
 
-    @RequestMapping(value="/rootAddColonia", method = RequestMethod.POST)
-    public String addStudent(@ModelAttribute("SpringWeb")Colonia colonia,
+    @RequestMapping(value = "/rootAddColonia", method = RequestMethod.POST)
+    public String addStudent(@ModelAttribute("SpringWeb") Colonia colonia,
                              ModelMap model) {
         logger.info("insert to colonia");
-        try
-        {
+        try {
             coloniaService.insertColonia(colonia);
-        }
-        catch (Exception e)
-        {
-            logger.error("ERROR INSERT Colonia "+e);
+        } catch (Exception e) {
+            logger.error("ERROR INSERT Colonia " + e.getMessage());
         }
         model.addAttribute("Nombre", colonia.getNombre());
-        return jspPath+"coloniaResult";
+        return jspPath + "coloniaResult";
     }
 }
