@@ -1,13 +1,13 @@
-package com.jb.vecinos.controller;
+package com.jb.vecinos.controller.root;
 
 import com.jb.vecinos.entities.Colonia;
 import com.jb.vecinos.services.RootService;
 import com.jb.vecinos.services.colonia.ColoniaService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
@@ -27,7 +27,9 @@ import java.util.Locale;
 public class RootController {
 
     final static Logger logger = Logger.getLogger(RootController.class);
-    final static String jspPath  = "root/";
+    final static String jspPathRoot  = "root/";
+    final static String jspPathAdmin  = "admin/";
+    final static String jspPathUser  = "user/";
 
     @Autowired
     private MessageSource messageSource;
@@ -35,9 +37,6 @@ public class RootController {
     public void setMessageSource(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
-
-    @Autowired
-    private RootService rootService;
 
     @Autowired
     private ColoniaService coloniaService;
@@ -51,9 +50,23 @@ public class RootController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Model model)
     {
-        logger.info("Welcome home :D");
-        model.addAttribute("now", ":D");
-        return "home";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        for(GrantedAuthority authority:auth.getAuthorities())
+        {
+            if(authority.getAuthority().equalsIgnoreCase("ROLE_ROOT"))
+            {
+                return jspPathRoot+"home";
+            }
+            else if(authority.getAuthority().equalsIgnoreCase("ROLE_ADMIN"))
+            {
+                return jspPathAdmin+"vecinosHome";
+            }
+            else if(authority.getAuthority().equalsIgnoreCase("ROLE_USER"))
+            {
+                return jspPathUser+"userHome";
+            }
+        }
+        return jspPathUser+"userHome";
     }
 
 
@@ -78,7 +91,7 @@ public class RootController {
     public String addAdminUser(Model model) {
         List<Colonia> coloniaList =  coloniaService.listColonia();
         model.addAttribute("coloniaList",coloniaList);
-        return jspPath+"coloniaConfiguration";
+        return jspPathRoot+"coloniaConfiguration";
 
     }
 

@@ -3,7 +3,10 @@ package com.jb.vecinos.controller.colonia;
 
 import com.jb.vecinos.entities.Colonia;
 import com.jb.vecinos.services.colonia.ColoniaService;
+import com.jb.vecinos.services.estado.EstadoService;
+import com.jb.vecinos.services.municipio.MunicipioService;
 import com.jb.vecinos.services.pais.PaisService;
+import com.jb.vecinos.services.zona.ZonaService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,15 +29,28 @@ public class ColoniaController {
     @Autowired
     private PaisService paisService;
 
+    @Autowired
+    private EstadoService estadoService;
+
+    @Autowired
+    private MunicipioService municipioService;
+
+    @Autowired
+    private ZonaService zonaService;
+
     final static Logger logger = Logger.getLogger(ColoniaController.class);
     final static String jspPath = "root/colonia/";
 
     @RequestMapping(value = "/rootColoniaForm", method = RequestMethod.GET)
     public ModelAndView addAdminUser(Model model) {
         model.addAttribute("catalogoPais", paisService.getCatalogo());
+        model.addAttribute("catalogoEstado", estadoService.getCatalogo());
+        model.addAttribute("catalogoMunicipio", municipioService.getCatalogo());
+        model.addAttribute("catalogoZona", zonaService.getCatalogo());
         return new ModelAndView(jspPath + "coloniaForm", "command", new Colonia());
 
     }
+
 
     @RequestMapping(value = "/rootAddColonia", method = RequestMethod.POST)
     public String addStudent(@ModelAttribute("SpringWeb") Colonia colonia,

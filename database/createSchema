@@ -2751,10 +2751,10 @@ CREATE TABLE IF NOT EXISTS `vecino` (
   `rutaFoto` varchar(200) DEFAULT NULL,
   `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idVecino`),
-  KEY `id_factura` (`idFactura`),
-  KEY `id_inquilino` (`idInquilino`),
-  KEY `id_cat_calle` (`idCalle`),
-  KEY `id_cat_estatus` (`idEstatus`)
+  KEY `idFactura` (`idFactura`),
+  KEY `idInquilino` (`idInquilino`),
+  KEY `idCalle` (`idCalle`),
+  KEY `idEstatus` (`idEstatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

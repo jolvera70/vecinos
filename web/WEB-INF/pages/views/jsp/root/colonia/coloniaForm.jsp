@@ -9,6 +9,18 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <%@ include file="/WEB-INF/pages/views/jsp/head.jsp" %>
+<script type="text/javascript" charset="utf-8">
+    $("select#paisSelect").change(function(){
+        alert("aqui");
+        $.getJSON("rootCatalogoEstado",{countryCode: $(this).val()}, function(j){
+            var options = '';
+            for (var i = 0; i < j.length; i++) {
+                options += '<option value="' + j[i].id + '">' + j[i].name + '</option>';
+            }
+            $("select#idEstado").html(options);
+        });
+    });
+</script>
 <body>
 <div id="wrapper">
     <%@ include file="/WEB-INF/pages/views/jsp/root/leftPanel.jsp" %>
@@ -16,64 +28,91 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line"><spring:message code="label.commons.colony" text="default text" /></h1>
+                    <h1 class="page-head-line"><spring:message code="label.commons.colony" text="default text"/></h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <spring:message code="label.colony.title" text="default text" />
+                            <spring:message code="label.colony.title" text="default text"/>
                         </div>
                         <div class="panel-body">
                             <form:form method="POST" action="rootAddColonia">
                                 <div class="form-group">
                                     <spring:message code='label.colony.name' text="default text" var="name"/>
-                                    <form:label path="nombre"/>${name}</label>
+                                    <form:label path="nombre"/>
+                                        ${name}</label>
                                     <form:input path="nombre" class="form-control" id="nombre" placeholder="${name}"/>
                                 </div>
                                 <div class="form-group">
-                                    <spring:message code='label.colony.country.combo' text="default text" var="countryCombo"/>
-                                    <spring:message code='label.colony.country' text="default text" var="country"/>
-                                    <spring:message code='label.commons.country.default.id' text="default text" var="countrydefault"/>
-                                    <label>${country}</label>
-                                    <select class="form-control">
-                                        <option value="0 >${countryCombo}</option>
-                                        <c:forEach items="${catalogoPais}" var="countryelement">
-                                            <c:if test="${countryelement.id_pais == countrydefault}">
-                                                <option value="${countryelement.id_pais}" selected>${countryelement.descPais}</option>
+                                    <spring:message code='label.colony.country.combo' text="default text"
+                                                    var="paisCombo"/>
+                                    <spring:message code='label.colony.country' text="default text" var="pais"/>
+                                    <spring:message code='label.commons.country.default.id' text="default text"
+                                                    var="paisDefault"/>
+                                    <label>${pais}</label>
+                                    <form:select class="form-control" path="idPais">
+                                        <option value="0">${paisCombo}</option>
+                                        <c:forEach items="${catalogoPais}" var="paisElemento">
+                                            <c:if test="${paisElemento.idPais == paisDefault}">
+                                                <option value="${paisElemento.idPais}"
+                                                        selected>${paisElemento.descPais}</option>
                                             </c:if>
-                                            <option value="${countryelement.id_pais}">${countryelement.descPais}</option>
+                                            <c:if test="${paisElemento.idPais != paisDefault}">
+                                                <option value="${paisElemento.idPais}">${paisElemento.descPais}</option>
+                                            </c:if>
                                         </c:forEach>
-                                    </select>
+                                    </form:select>
                                 </div>
 
                                 <div class="form-group">
-                                    <spring:message code='label.colony.country' text="default text" var="country"/>
-                                    <form:label path="idPais"/>${country}</label>
-                                    <form:input path="idPais" class="form-control" id="idPais" placeholder="${country}" />
+                                    <spring:message code='label.colony.state.combo' text="default text"
+                                                    var="estadoCombo"/>
+                                    <spring:message code='label.colony.state' text="default text" var="estado"/>
+                                    <label>${estado}</label>
+                                    <form:select class="form-control" path="idEstado">
+                                        <option value="0">${estadoCombo}</option>
+                                        <c:forEach items="${catalogoEstado}" var="estadoElemento">
+                                            <option value="${estadoElemento.idEstado}">${estadoElemento.descEstado}</option>
+                                        </c:forEach>
+                                    </form:select>
                                 </div>
+
                                 <div class="form-group">
-                                    <spring:message code='label.colony.state' text="default text" var="state"/>
-                                    <form:label path="idEstado"/>${state}</label>
-                                    <form:input path="idEstado" class="form-control" id="idEstado" placeholder="${state}" />
+                                    <spring:message code='label.colony.municipio.combo' text="default text"
+                                                    var="municipioCombo"/>
+                                    <spring:message code='label.colony.municipio' text="default text" var="municipio"/>
+                                    <label>${municipio}</label>
+                                    <form:select class="form-control" path="idMunicipio">
+                                        <option value="0" selected>${municipioCombo}</option>
+                                        <c:forEach items="${catalogoMunicipio}" var="municipioElemento">
+                                            <option value="${municipioElemento.idMunicipio}">${municipioElemento.descMunicipio}</option>
+                                        </c:forEach>
+                                    </form:select>
                                 </div>
+
                                 <div class="form-group">
-                                    <spring:message code='label.colony.city' text="default text" var="city"/>
-                                    <form:label path="idCiudad"/>${city}</label>
-                                    <form:input path="idCiudad" class="form-control" id="idCiudad" placeholder="${city}" />
+                                    <spring:message code='label.colony.zone.combo' text="default text"
+                                                    var="zonaCombo"/>
+                                    <spring:message code='label.colony.zone' text="default text" var="zona"/>
+                                    <label>${zona}</label>
+                                    <form:select class="form-control" path="idZona">
+                                        <option value="0" selected>${zonaCombo}</option>
+                                        <c:forEach items="${catalogoZona}" var="zonaElemento">
+                                            <option value="${zonaElemento.idZona}">${zonaElemento.descZona}</option>
+                                        </c:forEach>
+                                    </form:select>
                                 </div>
+
                                 <div class="form-group">
                                     <spring:message code='label.colony.zipcode' text="default text" var="zipcode"/>
-                                    <form:label path="cp"/>${zipcode}</label>
-                                    <form:input path="cp" class="form-control" id="cp" placeholder="${zipcode}" />
+                                    <form:label path="cp"/>
+                                        ${zipcode}</label>
+                                    <form:input path="cp" class="form-control" id="cp" placeholder="${zipcode}"/>
                                 </div>
-                                <div class="form-group">
-                                    <spring:message code='label.colony.zone' text="default text" var="zone"/>
-                                    <form:label path="idZona"/>${zone}</label>
-                                    <form:input path="idZona" class="form-control" id="idZona" placeholder="${zone}" />
-                                </div>
-                                <button type="submit" class="btn btn-default" value="submit"><spring:message code="label.commons.submit" text="default text"/></button>
+                                <button type="submit" class="btn btn-default" value="submit"><spring:message
+                                        code="label.commons.submit" text="default text"/></button>
                             </form:form>
                         </div>
                         <!-- /. PAGE INNER  -->
