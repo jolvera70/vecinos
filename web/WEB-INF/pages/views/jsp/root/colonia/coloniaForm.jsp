@@ -33,12 +33,14 @@
                                     <form:input path="nombre" class="form-control" id="nombre" placeholder="${name}"/>
                                 </div>
                                 <div class="form-group">
+                                    <spring:message code='label.colony.country.combo' text="default text" var="countryCombo"/>
                                     <spring:message code='label.colony.country' text="default text" var="country"/>
+                                    <spring:message code='label.commons.country.default.id' text="default text" var="countrydefault"/>
                                     <label>${country}</label>
                                     <select class="form-control">
+                                        <option value="0 >${countryCombo}</option>
                                         <c:forEach items="${catalogoPais}" var="countryelement">
-                                            <option value="0 >${country}</option>
-                                            <c:if test="${countryelement.desc_pais == 'MEXICO'}">
+                                            <c:if test="${countryelement.id_pais == countrydefault}">
                                                 <option value="${countryelement.id_pais}" selected>${countryelement.desc_pais}</option>
                                             </c:if>
                                             <option value="${countryelement.id_pais}">${countryelement.desc_pais}</option>
