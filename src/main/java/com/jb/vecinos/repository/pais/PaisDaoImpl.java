@@ -31,7 +31,7 @@ public class PaisDaoImpl implements PaisDao {
         List<Pais> list = null;
         try
         {
-            list = em.createQuery("select c from Pais c order by c.desc_pais")
+            list = em.createQuery("select c from Pais c order by c.descPais")
                     .getResultList();
         }
         catch(Exception e)

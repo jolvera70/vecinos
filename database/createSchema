@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2016 a las 02:47:56
+-- Tiempo de generación: 21-11-2016 a las 04:49:20
 -- Versión del servidor: 5.7.9
 -- Versión de PHP: 7.0.0
 
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `cat_admin_calle`;
 CREATE TABLE IF NOT EXISTS `cat_admin_calle` (
-  `id_cat_calle` int(11) NOT NULL AUTO_INCREMENT,
-  `desc_calle` varchar(100) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_colonia` int(11) NOT NULL,
-  PRIMARY KEY (`id_cat_calle`),
-  KEY `id_cat_calle` (`id_cat_calle`),
-  KEY `id_cat_calle_2` (`id_cat_calle`)
+  `idCalle` int(11) NOT NULL AUTO_INCREMENT,
+  `descCalle` varchar(100) NOT NULL,
+  `iduser` int(11) NOT NULL,
+  `idColonia` int(11) NOT NULL,
+  PRIMARY KEY (`idCalle`),
+  KEY `id_cat_calle` (`idCalle`),
+  KEY `id_cat_calle_2` (`idCalle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -45,17 +45,17 @@ CREATE TABLE IF NOT EXISTS `cat_admin_calle` (
 
 DROP TABLE IF EXISTS `cat_estado`;
 CREATE TABLE IF NOT EXISTS `cat_estado` (
-  `id_estado` int(11) NOT NULL AUTO_INCREMENT,
-  `desc_estado` varchar(100) NOT NULL,
-  `id_pais` int(11) NOT NULL,
-  PRIMARY KEY (`id_estado`)
+  `idEstado` int(11) NOT NULL AUTO_INCREMENT,
+  `descEstado` varchar(100) NOT NULL,
+  `idPais` int(11) NOT NULL,
+  PRIMARY KEY (`idEstado`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cat_estado`
 --
 
-INSERT INTO `cat_estado` (`id_estado`, `desc_estado`, `id_pais`) VALUES
+INSERT INTO `cat_estado` (`idEstado`, `descEstado`, `idPais`) VALUES
 (1, 'AGUASCALIENTES', 484),
 (2, 'BAJA CALIFORNIA', 484),
 (3, 'BAJA CALIFORNIA SUR', 484),
@@ -98,10 +98,10 @@ INSERT INTO `cat_estado` (`id_estado`, `desc_estado`, `id_pais`) VALUES
 
 DROP TABLE IF EXISTS `cat_estatus`;
 CREATE TABLE IF NOT EXISTS `cat_estatus` (
-  `id_cat_estatus` tinyint(2) NOT NULL AUTO_INCREMENT,
-  `desc_estatus` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_cat_estatus`),
-  KEY `id_cat_estatus` (`id_cat_estatus`)
+  `idEstatus` int(2) NOT NULL AUTO_INCREMENT,
+  `descEstatus` varchar(20) NOT NULL,
+  PRIMARY KEY (`idEstatus`),
+  KEY `id_cat_estatus` (`idEstatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -112,18 +112,18 @@ CREATE TABLE IF NOT EXISTS `cat_estatus` (
 
 DROP TABLE IF EXISTS `cat_municipio`;
 CREATE TABLE IF NOT EXISTS `cat_municipio` (
-  `id_municipio` int(11) NOT NULL AUTO_INCREMENT,
-  `desc_municipio` varchar(100) DEFAULT NULL,
-  `id_estado` int(11) NOT NULL,
-  PRIMARY KEY (`id_municipio`,`id_estado`),
-  KEY `id_estado` (`id_estado`)
+  `idMunicipio` int(11) NOT NULL AUTO_INCREMENT,
+  `descMunicipio` varchar(100) DEFAULT NULL,
+  `idEstado` int(11) NOT NULL,
+  PRIMARY KEY (`idMunicipio`,`idEstado`),
+  KEY `id_estado` (`idEstado`)
 ) ENGINE=InnoDB AUTO_INCREMENT=571 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cat_municipio`
 --
 
-INSERT INTO `cat_municipio` (`id_municipio`, `desc_municipio`, `id_estado`) VALUES
+INSERT INTO `cat_municipio` (`idMunicipio`, `descMunicipio`, `idEstado`) VALUES
 (1, 'AGUASCALIENTES', 1),
 (1, 'ENSENADA', 2),
 (1, 'COMONDU', 3),
@@ -2190,7 +2190,7 @@ INSERT INTO `cat_municipio` (`id_municipio`, `desc_municipio`, `id_estado`) VALU
 (209, 'ZAPOTITLAN', 21),
 (210, 'SAN JUAN ÑUMI', 20),
 (210, 'ZAPOTITLAN DE MENDEZ', 21);
-INSERT INTO `cat_municipio` (`id_municipio`, `desc_municipio`, `id_estado`) VALUES
+INSERT INTO `cat_municipio` (`idMunicipio`, `descMunicipio`, `idEstado`) VALUES
 (211, 'SAN JUAN OZOLOTEPEC', 20),
 (211, 'ZARAGOZA', 21),
 (212, 'SAN JUAN PETLAPA', 20),
@@ -2567,16 +2567,16 @@ INSERT INTO `cat_municipio` (`id_municipio`, `desc_municipio`, `id_estado`) VALU
 
 DROP TABLE IF EXISTS `cat_pais`;
 CREATE TABLE IF NOT EXISTS `cat_pais` (
-  `id_pais` int(11) NOT NULL AUTO_INCREMENT,
-  `desc_pais` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_pais`)
+  `idPais` int(11) NOT NULL AUTO_INCREMENT,
+  `descPais` varchar(50) NOT NULL,
+  PRIMARY KEY (`idPais`)
 ) ENGINE=InnoDB AUTO_INCREMENT=841 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cat_pais`
 --
 
-INSERT INTO `cat_pais` (`id_pais`, `desc_pais`) VALUES
+INSERT INTO `cat_pais` (`idPais`, `descPais`) VALUES
 (484, 'MEXICO'),
 (840, 'ESTADOS UNIDOS');
 
@@ -2588,16 +2588,16 @@ INSERT INTO `cat_pais` (`id_pais`, `desc_pais`) VALUES
 
 DROP TABLE IF EXISTS `cat_zona`;
 CREATE TABLE IF NOT EXISTS `cat_zona` (
-  `id_zona` int(11) NOT NULL AUTO_INCREMENT,
-  `desc_zona` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_zona`)
+  `idZona` int(11) NOT NULL AUTO_INCREMENT,
+  `descZona` varchar(50) NOT NULL,
+  PRIMARY KEY (`idZona`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cat_zona`
 --
 
-INSERT INTO `cat_zona` (`id_zona`, `desc_zona`) VALUES
+INSERT INTO `cat_zona` (`idZona`, `descZona`) VALUES
 (1, 'CENTRO'),
 (2, 'NORTE'),
 (3, 'SUR'),
@@ -2612,15 +2612,15 @@ INSERT INTO `cat_zona` (`id_zona`, `desc_zona`) VALUES
 
 DROP TABLE IF EXISTS `colonia`;
 CREATE TABLE IF NOT EXISTS `colonia` (
-  `id_colonia` int(11) NOT NULL AUTO_INCREMENT,
+  `idColonia` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
-  `id_zona` int(11) DEFAULT NULL,
-  `id_ciudad` int(11) NOT NULL,
-  `id_estado` int(11) NOT NULL,
-  `id_pais` int(11) NOT NULL,
+  `idZona` int(11) DEFAULT NULL,
+  `idMunicipio` int(11) NOT NULL,
+  `idEstado` int(11) NOT NULL,
+  `idPais` int(11) NOT NULL,
   `cp` varchar(10) DEFAULT NULL,
-  `fecha_registro` timestamp NOT NULL,
-  PRIMARY KEY (`id_colonia`)
+  `fechaRegistro` timestamp NOT NULL,
+  PRIMARY KEY (`idColonia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2631,11 +2631,11 @@ CREATE TABLE IF NOT EXISTS `colonia` (
 
 DROP TABLE IF EXISTS `colonia_vecino`;
 CREATE TABLE IF NOT EXISTS `colonia_vecino` (
-  `id_colonia_vecino` int(11) NOT NULL AUTO_INCREMENT,
-  `id_colonia` int(11) NOT NULL,
-  `id_vecino` int(11) NOT NULL,
-  `fecha_registro` timestamp NOT NULL,
-  PRIMARY KEY (`id_colonia_vecino`)
+  `idColoniaVecino` int(11) NOT NULL AUTO_INCREMENT,
+  `idColonia` int(11) NOT NULL,
+  `idVecino` int(11) NOT NULL,
+  `fechaRegistro` timestamp NOT NULL,
+  PRIMARY KEY (`idColoniaVecino`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2646,13 +2646,13 @@ CREATE TABLE IF NOT EXISTS `colonia_vecino` (
 
 DROP TABLE IF EXISTS `facturacion`;
 CREATE TABLE IF NOT EXISTS `facturacion` (
-  `id_factura` int(11) NOT NULL AUTO_INCREMENT,
+  `idFactura` int(11) NOT NULL AUTO_INCREMENT,
   `rfc` varchar(20) NOT NULL,
   `direccion` varchar(200) NOT NULL,
-  `id_cat_estatus` tinyint(2) NOT NULL,
-  `fecha_registro` timestamp NOT NULL,
-  PRIMARY KEY (`id_factura`),
-  KEY `id_factura` (`id_factura`)
+  `idEstatus` int(2) NOT NULL,
+  `fechaRegistro` timestamp NOT NULL,
+  PRIMARY KEY (`idFactura`),
+  KEY `id_factura` (`idFactura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2663,18 +2663,18 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
 
 DROP TABLE IF EXISTS `inquilino`;
 CREATE TABLE IF NOT EXISTS `inquilino` (
-  `id_inquilino` int(11) NOT NULL AUTO_INCREMENT,
-  `inq_nombre` varchar(50) NOT NULL,
-  `inq_apellido_paterno` varchar(50) NOT NULL,
-  `inq_apellido_materno` varchar(50) NOT NULL,
-  `num_celular` varchar(10) NOT NULL,
+  `idInquilino` int(11) NOT NULL AUTO_INCREMENT,
+  `inqNombre` varchar(50) NOT NULL,
+  `inqApellidoPaterno` varchar(50) NOT NULL,
+  `inqApellidoMaterno` varchar(50) NOT NULL,
+  `numCelular` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `requiere_factura` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
-  `id_factura` int(11) NOT NULL,
-  `id_cat_estatus` tinyint(2) NOT NULL,
-  `fecha_registro` timestamp NOT NULL,
-  PRIMARY KEY (`id_inquilino`),
-  KEY `id_inquilino` (`id_inquilino`)
+  `requiereFactura` int(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `idFactura` int(11) NOT NULL,
+  `idEstatus` int(2) NOT NULL,
+  `fechaRegistro` timestamp NOT NULL,
+  PRIMARY KEY (`idInquilino`),
+  KEY `id_inquilino` (`idInquilino`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2733,28 +2733,28 @@ INSERT INTO `user_roles` (`user_role_id`, `username`, `rol`) VALUES
 
 DROP TABLE IF EXISTS `vecino`;
 CREATE TABLE IF NOT EXISTS `vecino` (
-  `id_vecino` int(11) NOT NULL AUTO_INCREMENT,
+  `idVecino` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
-  `apellido_paterno` varchar(50) NOT NULL,
-  `apellido_materno` varchar(50) DEFAULT NULL,
-  `id_cat_calle` int(11) NOT NULL,
-  `num_casa` varchar(10) NOT NULL,
-  `num_celular` varchar(10) DEFAULT NULL,
-  `num_telefono` varchar(10) DEFAULT NULL,
+  `apellidoPaterno` varchar(50) NOT NULL,
+  `apellidoMaterno` varchar(50) DEFAULT NULL,
+  `idCalle` int(11) NOT NULL,
+  `numCasa` varchar(10) NOT NULL,
+  `numCelular` varchar(10) DEFAULT NULL,
+  `numTelefono` varchar(10) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
-  `requiere_factura` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
-  `casa_rentada` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
-  `es_visible` tinyint(1) NOT NULL COMMENT '1=SI, 0=NO',
-  `id_inquilino` int(11) DEFAULT NULL,
-  `id_factura` int(11) DEFAULT NULL,
-  `id_cat_estatus` tinyint(2) NOT NULL,
-  `ruta_foto` varchar(200) DEFAULT NULL,
-  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_vecino`),
-  KEY `id_factura` (`id_factura`),
-  KEY `id_inquilino` (`id_inquilino`),
-  KEY `id_cat_calle` (`id_cat_calle`),
-  KEY `id_cat_estatus` (`id_cat_estatus`)
+  `requiereFactura` int(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `casaRentada` int(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `esVisible` int(1) NOT NULL COMMENT '1=SI, 0=NO',
+  `idInquilino` int(11) DEFAULT NULL,
+  `idFactura` int(11) DEFAULT NULL,
+  `idEstatus` int(2) NOT NULL,
+  `rutaFoto` varchar(200) DEFAULT NULL,
+  `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idVecino`),
+  KEY `id_factura` (`idFactura`),
+  KEY `id_inquilino` (`idInquilino`),
+  KEY `id_cat_calle` (`idCalle`),
+  KEY `id_cat_estatus` (`idEstatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2765,8 +2765,8 @@ CREATE TABLE IF NOT EXISTS `vecino` (
 -- Filtros para la tabla `vecino`
 --
 ALTER TABLE `vecino`
-  ADD CONSTRAINT `vecino_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `facturacion` (`id_factura`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `vecino_ibfk_2` FOREIGN KEY (`id_inquilino`) REFERENCES `inquilino` (`id_inquilino`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `vecino_ibfk_1` FOREIGN KEY (`idFactura`) REFERENCES `facturacion` (`idFactura`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `vecino_ibfk_2` FOREIGN KEY (`idInquilino`) REFERENCES `inquilino` (`idInquilino`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

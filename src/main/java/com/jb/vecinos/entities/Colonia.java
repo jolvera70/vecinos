@@ -16,63 +16,50 @@ public class Colonia implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String nombre;
-    private Integer id_pais;
-    private Integer id_estado;
-    private Integer id_ciudad;
-    private Integer id_zona;
+    private Integer idPais;
+    private Integer idEstado;
+    private Integer idMunicipio;
+    private Integer idZona;
     private String cp;
 
 
     //entity
     @Id
-    @Column(name = "id_colonia")
+    @Column(name = "idColonia")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_colonia;
+    private Integer idColonia;
 
-    public Integer getIdColonia() {
-        return id_colonia;
+
+    public String getNombre() {
+        return nombre;
     }
-
-    public void setIdColonia(Integer id_colonia) {
-        this.id_colonia = id_colonia;
-    }
-
-    public String getNombre() { return nombre;}
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     public Integer getIdPais() {
-        return id_pais;
+        return idPais;
     }
 
-    public void setIdPais(Integer id_pais) {
-        this.id_pais = id_pais;
+    public void setIdPais(Integer idPais) {
+        this.idPais = idPais;
     }
 
     public Integer getIdEstado() {
-        return id_estado;
+        return idEstado;
     }
 
-    public void setIdEstado(Integer id_estado) {
-        this.id_estado = id_estado;
-    }
-
-    public Integer getIdCiudad() {
-        return id_ciudad;
-    }
-
-    public void setIdCiudad(Integer id_ciudad) {
-        this.id_ciudad = id_ciudad;
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
     }
 
     public Integer getIdZona() {
-        return id_zona;
+        return idZona;
     }
 
-    public void setIdZona(Integer id_zona) {
-        this.id_zona = id_zona;
+    public void setIdZona(Integer idZona) {
+        this.idZona = idZona;
     }
 
     public String getCp() {
@@ -81,5 +68,21 @@ public class Colonia implements Serializable {
 
     public void setCp(String cp) {
         this.cp = cp;
+    }
+
+    public Integer getIdColonia() {
+        return idColonia;
+    }
+
+    public void setIdColonia(Integer idColonia) {
+        this.idColonia = idColonia;
+    }
+
+    public Integer getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    public void setIdMunicipio(Integer idMunicipio) {
+        this.idMunicipio = idMunicipio;
     }
 }

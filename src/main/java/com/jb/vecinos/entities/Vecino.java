@@ -17,7 +17,7 @@ public class Vecino implements Serializable {
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private Integer idCatCalle;
+    private Integer idCalle;
     private String numCasa;
     private String numCelular;
     private String numTelefono;
@@ -27,13 +27,13 @@ public class Vecino implements Serializable {
     private Integer esVisible;
     private Integer idInquilino;
     private Integer idFactura;
-    private Integer idCatEstatus;
+    private Integer idEstatus;
     private String rutaFoto;
     private Date fechaRegistro;
 
     //entity
     @Id
-    @Column(name = "id_vecino")
+    @Column(name = "idVecino")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idVecino;
 
@@ -62,12 +62,12 @@ public class Vecino implements Serializable {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public Integer getIdCatCalle() {
-        return idCatCalle;
+    public Integer getIdCalle() {
+        return idCalle;
     }
 
-    public void setIdCatCalle(Integer idCatCalle) {
-        this.idCatCalle = idCatCalle;
+    public void setIdCalle(Integer idCalle) {
+        this.idCalle = idCalle;
     }
 
     public String getNumCasa() {
@@ -142,12 +142,12 @@ public class Vecino implements Serializable {
         this.idFactura = idFactura;
     }
 
-    public Integer getIdCatEstatus() {
-        return idCatEstatus;
+    public Integer getIdEstatus() {
+        return idEstatus;
     }
 
-    public void setIdCatEstatus(Integer idCatEstatus) {
-        this.idCatEstatus = idCatEstatus;
+    public void setIdEstatus(Integer idEstatus) {
+        this.idEstatus = idEstatus;
     }
 
     public String getRutaFoto() {
@@ -164,5 +164,13 @@ public class Vecino implements Serializable {
 
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public Integer getIdVecino() {
+        return idVecino;
+    }
+
+    public void setIdVecino(Integer idVecino) {
+        this.idVecino = idVecino;
     }
 }

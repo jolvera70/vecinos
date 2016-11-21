@@ -41,9 +41,9 @@
                                         <option value="0 >${countryCombo}</option>
                                         <c:forEach items="${catalogoPais}" var="countryelement">
                                             <c:if test="${countryelement.id_pais == countrydefault}">
-                                                <option value="${countryelement.id_pais}" selected>${countryelement.desc_pais}</option>
+                                                <option value="${countryelement.id_pais}" selected>${countryelement.descPais}</option>
                                             </c:if>
-                                            <option value="${countryelement.id_pais}">${countryelement.desc_pais}</option>
+                                            <option value="${countryelement.id_pais}">${countryelement.descPais}</option>
                                         </c:forEach>
                                     </select>
                                 </div>

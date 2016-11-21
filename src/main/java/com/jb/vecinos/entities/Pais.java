@@ -12,28 +12,28 @@ public class Pais implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String desc_pais;
+    private String descPais;
 
     //entity
     @Id
-    @Column(name = "id_pais")
+    @Column(name = "idPais")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_pais;
+    private Integer idPais;
 
-    public Integer getId_pais() {
-        return id_pais;
+
+    public String getDescPais() {
+        return descPais;
     }
 
-    public void setId_pais(Integer id_pais) {
-        this.id_pais = id_pais;
+    public void setDescPais(String descPais) {
+        this.descPais = descPais;
     }
 
-    public String getDesc_pais() {
-        return desc_pais;
+    public Integer getIdPais() {
+        return idPais;
     }
 
-    public void setDesc_pais(String desc_pais) {
-        this.desc_pais = desc_pais;
+    public void setIdPais(Integer idPais) {
+        this.idPais = idPais;
     }
-
 }
