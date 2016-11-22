@@ -41,7 +41,7 @@ public class VecinoDaoImpl implements VecinoDao {
         List<Vecino> list = null;
         try
         {
-            list = em.createQuery("select v from Vecino v order by v.idVecino")
+            list = em.createQuery("select c from Vecino c order by c.idVecino")
                     .getResultList();
         }
         catch(Exception e)

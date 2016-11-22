@@ -8,6 +8,7 @@ import java.util.List;
  * Created by bvelasco on 20/11/2016.
  */
 public interface CalleService {
+    public List<Calle> getCatalogo();
     public void insertCalle(Calle calle);
     public List<Calle> listCalle();
 }

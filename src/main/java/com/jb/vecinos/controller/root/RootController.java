@@ -3,6 +3,7 @@ package com.jb.vecinos.controller.root;
 import com.jb.vecinos.entities.Colonia;
 import com.jb.vecinos.services.RootService;
 import com.jb.vecinos.services.colonia.ColoniaService;
+import com.jb.vecinos.services.vecino.VecinoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -41,6 +42,9 @@ public class RootController {
     @Autowired
     private ColoniaService coloniaService;
 
+    @Autowired
+    private VecinoService vecinoService ;
+
     @RequestMapping(value={"","/","/login"}, method = RequestMethod.GET)
     public String login(Model model)
     {
@@ -59,6 +63,7 @@ public class RootController {
             }
             else if(authority.getAuthority().equalsIgnoreCase("ROLE_ADMIN"))
             {
+                model.addAttribute("vecinosList",vecinoService.listVecino());
                 return jspPathAdmin+"homeAdmin";
             }
             else if(authority.getAuthority().equalsIgnoreCase("ROLE_USER"))

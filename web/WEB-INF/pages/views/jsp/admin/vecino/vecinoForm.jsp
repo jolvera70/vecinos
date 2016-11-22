@@ -11,7 +11,7 @@
 <%@ include file="/WEB-INF/pages/views/jsp/head.jsp" %>
 <body>
 <div id="wrapper">
-    <%@ include file="/WEB-INF/pages/views/jsp/root/leftPanel.jsp" %>
+    <%@ include file="/WEB-INF/pages/views/jsp/admin/leftPanelAdmin.jsp" %>
     <div id="page-wrapper" class="page-wrapper-cls">
         <div id="page-inner">
             <div class="row">
@@ -29,54 +29,49 @@
                             <form:form method="POST" action="adminAddVecino">
                                 <div class="form-group">
                                     <spring:message code='label.neighbor.name' text="default text" var="name"/>
-                                    <form:label path="nombre"/>${name}</label>
+                                    <label>${name}</label>
                                     <form:input path="nombre" class="form-control" id="nombre" placeholder="${name}"/>
                                 </div>
                                 <div class="form-group">
-                                    <spring:message code='label.neighbor.name' text="default text" var="name"/>
-                                        <form:label path="nombre"/>${name}</label>
-                                    <form:input path="nombre" class="form-control" id="nombre" placeholder="${name}"/>
+                                    <spring:message code='label.neighbor.lastName1' text="default text" var="apellidoPaterno"/>
+                                    <label>${apellidoPaterno}</label>
+                                    <form:input path="apellidoPaterno" class="form-control" id="apellidoPaterno" placeholder="${apellidoPaterno}"/>
                                 </div>
                                 <div class="form-group">
-                                    <spring:message code='label.colony.country.combo' text="default text" var="countryCombo"/>
-                                    <spring:message code='label.colony.country' text="default text" var="country"/>
-                                    <spring:message code='label.commons.country.default.id' text="default text" var="countrydefault"/>
-                                    <label>${country}</label>
-                                    <select class="form-control">
-                                        <option value="0 >${countryCombo}</option>
-                                        <c:forEach items="${catalogoPais}" var="countryelement">
-                                            <c:if test="${countryelement.id_pais == countrydefault}">
-                                                <option value="${countryelement.id_pais}" selected>${countryelement.descPais}</option>
-                                            </c:if>
-                                            <option value="${countryelement.id_pais}">${countryelement.descPais}</option>
+                                    <spring:message code='label.neighbor.lastName2' text="default text" var="apellidoMaterno"/>
+                                    <label>${apellidoMaterno}</label>
+                                    <form:input path="apellidoMaterno" class="form-control" id="apellidoMaterno" placeholder="${apellidoMaterno}"/>
+                                </div>
+                                <div class="form-group">
+                                    <spring:message code='label.neighbor.streat.combo' text="default text" var="calleCombo"/>
+                                    <spring:message code='label.neighbor.streat' text="default text" var="calle"/>
+                                    <label>${calle}</label>
+                                    <form:select class="form-control" path="idCalle">
+                                        <option value="0">${calleCombo}</option>
+                                        <c:forEach items="${catalogoCalle}" var="calleElemento">
+                                            <option value="${calleElemento.idCalle}">${calleElemento.descCalle}</option>
                                         </c:forEach>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <spring:message code='label.colony.country' text="default text" var="country"/>
-                                    <form:label path="idPais"/>${country}</label>
-                                    <form:input path="idPais" class="form-control" id="idPais" placeholder="${country}" />
+                                    </form:select>
                                 </div>
                                 <div class="form-group">
-                                    <spring:message code='label.colony.state' text="default text" var="state"/>
-                                    <form:label path="idEstado"/>${state}</label>
-                                    <form:input path="idEstado" class="form-control" id="idEstado" placeholder="${state}" />
+                                    <spring:message code='label.neighbor.houseNumber' text="default text" var="numCasa"/>
+                                    <label>${numCasa}</label>
+                                    <form:input path="numCasa" class="form-control" id="numCasa" placeholder="${numCasa}"/>
                                 </div>
                                 <div class="form-group">
-                                    <spring:message code='label.colony.city' text="default text" var="city"/>
-                                    <form:label path="idCiudad"/>${city}</label>
-                                    <form:input path="idCiudad" class="form-control" id="idCiudad" placeholder="${city}" />
+                                    <spring:message code='label.neighbor.movilNumber' text="default text" var="numCelular"/>
+                                    <label>${numCelular}</label>
+                                    <form:input path="numCelular" class="form-control" id="numCelular" placeholder="${numCelular}"/>
                                 </div>
                                 <div class="form-group">
-                                    <spring:message code='label.colony.zipcode' text="default text" var="zipcode"/>
-                                    <form:label path="cp"/>${zipcode}</label>
-                                    <form:input path="cp" class="form-control" id="cp" placeholder="${zipcode}" />
+                                    <spring:message code='label.neighbor.phoneNumber' text="default text" var="numTelefono"/>
+                                    <label>${numTelefono}</label>
+                                    <form:input path="numTelefono" class="form-control" id="numTelefono" placeholder="${numTelefono}"/>
                                 </div>
                                 <div class="form-group">
-                                    <spring:message code='label.colony.zone' text="default text" var="zone"/>
-                                    <form:label path="idZona"/>${zone}</label>
-                                    <form:input path="idZona" class="form-control" id="idZona" placeholder="${zone}" />
+                                    <spring:message code='label.neighbor.email' text="default text" var="email"/>
+                                    <label>${email}</label>
+                                    <form:input path="email" class="form-control" id="email" placeholder="${email}"/>
                                 </div>
                                 <button type="submit" class="btn btn-default" value="submit"><spring:message code="label.commons.submit" text="default text"/></button>
                             </form:form>

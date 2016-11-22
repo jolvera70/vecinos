@@ -1,7 +1,7 @@
 package com.jb.vecinos.services.calle;
 
 import com.jb.vecinos.entities.Calle;
-import com.jb.vecinos.entities.Colonia;
+import com.jb.vecinos.entities.Estado;
 import com.jb.vecinos.repository.calle.CalleDao;
 import com.jb.vecinos.repository.colonia.ColoniaDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +25,9 @@ public class CalleServiceImpl implements CalleService {
 
     public List<Calle> listCalle() {
         return calleDao.listCalle();
+    }
+
+    public List<Calle> getCatalogo() {
+        return calleDao.getCatalogo();
     }
 }

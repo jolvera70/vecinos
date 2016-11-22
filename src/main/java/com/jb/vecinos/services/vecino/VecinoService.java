@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by bvelasco on 20/11/2016.
  */
-public interface VecinosService {
+public interface VecinoService {
     public void insertVecino(Vecino vecino);
     public List<Vecino> listVecino();
 }

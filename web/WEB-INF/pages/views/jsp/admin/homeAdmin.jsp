@@ -34,15 +34,15 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th># /</th>
                                             <th><spring:message code="label.commons.name" text="default text"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${vecinoList}" var="vecino">
+                                        <c:forEach items="${vecinosList}" var="vecino">
                                             <tr class="success">
                                                 <td>${vecino.idVecino}</td>
-                                                <td>${vecino.nombre}</td>
+                                                <td>${vecino.nombre} ${vecino.apellidoPaterno} ${vecino.apellidoMaterno}</td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>

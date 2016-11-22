@@ -1,10 +1,9 @@
 package com.jb.vecinos.controller.admin;
 
 import com.jb.vecinos.entities.Calle;
-import com.jb.vecinos.entities.Colonia;
 import com.jb.vecinos.entities.Vecino;
 import com.jb.vecinos.services.calle.CalleService;
-import com.jb.vecinos.services.vecino.VecinosService;
+import com.jb.vecinos.services.vecino.VecinoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,12 +24,11 @@ public class AdminController {
     final static String jspPath  = "admin/";
 
     @Autowired
-    private VecinosService vecinosService;
+    private VecinoService vecinoService ;
 
     @RequestMapping(value="/homeAdmin", method = RequestMethod.GET)
     public String addAdminVecino(Model model) {
-        List<Vecino> vecinosList =  vecinosService.listVecino();
-        model.addAttribute("vecinosList",vecinosList);
+        model.addAttribute("vecinosList",vecinoService.listVecino());
         return jspPath+"homeAdmin";
     }
 

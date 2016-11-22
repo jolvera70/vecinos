@@ -29,7 +29,7 @@ public class Vecino implements Serializable {
     private Integer idFactura;
     private Integer idEstatus;
     private String rutaFoto;
-    private Date fechaRegistro;
+    //private Date fechaRegistro;
 
     //entity
     @Id
@@ -156,14 +156,6 @@ public class Vecino implements Serializable {
 
     public void setRutaFoto(String rutaFoto) {
         this.rutaFoto = rutaFoto;
-    }
-
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
     }
 
     public Integer getIdVecino() {

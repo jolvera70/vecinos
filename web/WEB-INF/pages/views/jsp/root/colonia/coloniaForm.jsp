@@ -67,8 +67,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <spring:message code='label.colony.state.combo' text="default text"
-                                                    var="estadoCombo"/>
+                                    <spring:message code='label.colony.state.combo' text="default text" var="estadoCombo"/>
                                     <spring:message code='label.colony.state' text="default text" var="estado"/>
                                     <label>${estado}</label>
                                     <form:select class="form-control" path="idEstado">
