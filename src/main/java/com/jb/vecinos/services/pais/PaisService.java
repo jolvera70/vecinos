@@ -9,5 +9,8 @@ import java.util.List;
  * Created by jolvera on 13/11/2016.
  */
 public interface PaisService {
+
     public List<Pais> getCatalogo();
+
+    public Pais getPaisById(final int idPais);
 }

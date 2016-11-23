@@ -20,7 +20,7 @@ public class EstadoServiceImpl implements EstadoService{
         return estadoDao.getCatalogo();
     }
 
-    public List<Estado> getCatalogoByPais(final int idPais) {
-        return estadoDao.getCatalogoByPais(idPais);
+    public Estado getEstadoById(final int idEstado) {
+        return estadoDao.getEstadoById(idEstado);
     }
 }

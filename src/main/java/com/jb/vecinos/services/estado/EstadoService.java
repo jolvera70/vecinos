@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface EstadoService {
     public List<Estado> getCatalogo();
-    public List<Estado> getCatalogoByPais(final int idPais);
+    public Estado getEstadoById(final int idEstado);
 }

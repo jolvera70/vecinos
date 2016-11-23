@@ -30,6 +30,7 @@ public class VecinoController {
 
     @RequestMapping(value="/adminVecinoForm", method = RequestMethod.GET)
     public ModelAndView addVecino(Model model) {
+        model.addAttribute("vecino",new Vecino());
         model.addAttribute("catalogoCalle", calleService.getCatalogo());
         return new ModelAndView(jspPath+"vecinoForm", "command", new Vecino());
 

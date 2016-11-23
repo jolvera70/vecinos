@@ -17,8 +17,8 @@ public class EstadoController {
     private EstadoService estadoService;
 
     @RequestMapping(value = "/rootCatalogoEstado", method = RequestMethod.GET)
-    public Model catalogoEstado(Model model, final int idPais) {
-        model.addAttribute("catalogoEstado", estadoService.getCatalogoByPais(idPais));
+    public Model catalogoEstado(Model model, final int idEstado) {
+        model.addAttribute("catalogoEstado", estadoService.getEstadoById(idEstado));
         return model;
 
     }

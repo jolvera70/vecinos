@@ -92,12 +92,6 @@ public class RootController {
 
     }
 
-    @RequestMapping(value="/rootColoniaConfiguration", method = RequestMethod.GET)
-    public String addAdminUser(Model model) {
-        List<Colonia> coloniaList =  coloniaService.listColonia();
-        model.addAttribute("coloniaList",coloniaList);
-        return jspPathRoot+"coloniaConfiguration";
 
-    }
 
 }

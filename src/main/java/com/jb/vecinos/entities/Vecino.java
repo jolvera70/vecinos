@@ -1,5 +1,7 @@
 package com.jb.vecinos.entities;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -22,7 +24,8 @@ public class Vecino implements Serializable {
     private String numCelular;
     private String numTelefono;
     private String email;
-    private Integer requiereFactura;
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean requiereFactura;
     private Integer casaRentada;
     private Integer esVisible;
     private Integer idInquilino;
@@ -102,11 +105,11 @@ public class Vecino implements Serializable {
         this.email = email;
     }
 
-    public Integer getRequiereFactura() {
+    public boolean getRequiereFactura() {
         return requiereFactura;
     }
 
-    public void setRequiereFactura(Integer requiereFactura) {
+    public void setRequiereFactura(boolean requiereFactura) {
         this.requiereFactura = requiereFactura;
     }
 

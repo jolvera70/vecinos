@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface MunicipioService {
     public List<Municipio> getCatalogo();
+    public Municipio getMunicipioByIdAndEstado(final int idMunicipio,final int idEstado);
 }

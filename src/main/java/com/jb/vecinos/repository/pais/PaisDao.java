@@ -11,4 +11,6 @@ public interface PaisDao {
 
     public List<Pais> getCatalogo();
 
+    public Pais getPaisById(final int idPais);
+
 }

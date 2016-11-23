@@ -22,4 +22,8 @@ public class PaisServiceImpl implements PaisService{
     public List<Pais> getCatalogo() {
         return paisDao.getCatalogo();
     }
+
+    public Pais getPaisById(final int idPais) {
+        return paisDao.getPaisById(idPais);
+    }
 }

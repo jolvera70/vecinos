@@ -19,4 +19,8 @@ public class ZonaServiceImpl implements ZonaService{
     public List<Zona> getCatalogo() {
         return zonaDao.getCatalogo();
     }
+
+    public Zona getZonaById(final int idZona) {
+        return zonaDao.getZonaById(idZona);
+    }
 }

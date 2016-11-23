@@ -42,18 +42,17 @@ public class EstadoDaoImpl implements EstadoDao {
 
     @Transactional(readOnly = true)
     @SuppressWarnings("unchecked")
-    public List<Estado> getCatalogoByPais(final int idPais)
+    public Estado getEstadoById(final int idEstado)
     {
-        List<Estado> list = null;
+        Estado estado = null;
         try
         {
-            list = em.createQuery("select c from Estado c where c.idPais ="+idPais+" order by c.descEstado")
-                    .getResultList();
+            estado = em.find(Estado.class,idEstado);
         }
         catch(Exception e)
         {
             logger.error(e);
         }
-        return list;
+        return estado;
     }
 }

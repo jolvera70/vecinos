@@ -11,6 +11,6 @@ public interface EstadoDao {
 
     public List<Estado> getCatalogo();
 
-    public List<Estado> getCatalogoByPais(final int idPais);
+    public Estado getEstadoById(final int idEstado);
 
 }

@@ -19,4 +19,8 @@ public class MunicipioServiceImpl implements MunicipioService{
     public List<Municipio> getCatalogo() {
         return municipioDao.getCatalogo();
     }
+
+    public Municipio getMunicipioByIdAndEstado(final int idMunicipio,final int idEstado) {
+        return municipioDao.getMunicipioByIdAndEstado(idMunicipio,idEstado);
+    }
 }

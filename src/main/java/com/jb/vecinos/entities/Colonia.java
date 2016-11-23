@@ -1,5 +1,9 @@
 package com.jb.vecinos.entities;
 
+import com.jb.vecinos.entities.colonia.ColoniaBase;
+import com.jb.vecinos.services.pais.PaisService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,7 +15,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "colonia")
-public class Colonia implements Serializable {
+public class Colonia extends ColoniaBase implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,7 +25,6 @@ public class Colonia implements Serializable {
     private Integer idMunicipio;
     private Integer idZona;
     private String cp;
-
 
     //entity
     @Id

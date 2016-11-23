@@ -34,8 +34,10 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th># /</th>
+                                            <th>#</th>
                                             <th><spring:message code="label.commons.name" text="default text"/></th>
+                                            <th><spring:message code="label.neighbor.street" text="default text"/></th>
+                                            <th><spring:message code="label.neighbor.status" text="default text"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>

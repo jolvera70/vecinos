@@ -39,4 +39,22 @@ public class MunicipioDaoImpl implements MunicipioDao {
         }
         return list;
     }
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+    public Municipio getMunicipioByIdAndEstado(final int idMunicipio,final int idEstado)
+    {
+        Municipio municipio = null;
+        try
+        {
+            municipio = (Municipio) em.createQuery("select c from Municipio c where c.idMunicipio="+idMunicipio+
+                    " and c.idEstado="+idEstado+" order by c.descMunicipio")
+                    .getSingleResult();
+        }
+        catch(Exception e)
+        {
+            logger.error(e);
+        }
+        return municipio;
+    }
 }

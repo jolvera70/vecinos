@@ -39,4 +39,20 @@ public class ZonaDaoImpl implements ZonaDao {
         }
         return list;
     }
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+    public Zona getZonaById(final int idZona)
+    {
+        Zona zona = null;
+        try
+        {
+            zona = em.find(Zona.class,idZona);
+        }
+        catch(Exception e)
+        {
+            logger.error(e);
+        }
+        return zona;
+    }
 }

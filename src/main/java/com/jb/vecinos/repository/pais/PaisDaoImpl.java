@@ -40,4 +40,20 @@ public class PaisDaoImpl implements PaisDao {
         }
         return list;
     }
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+    public Pais getPaisById(final int idPais)
+    {
+        Pais pais = null;
+        try
+        {
+            pais = em.find(Pais.class,idPais);
+        }
+        catch(Exception e)
+        {
+            logger.error(e);
+        }
+        return pais;
+    }
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface ZonaService {
 
     public List<Zona> getCatalogo();
+
+    public Zona getZonaById(final int idZona);
 }
