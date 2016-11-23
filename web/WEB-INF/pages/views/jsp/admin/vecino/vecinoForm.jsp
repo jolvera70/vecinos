@@ -73,6 +73,11 @@
                                     <label>${email}</label>
                                     <form:input path="email" class="form-control" id="email" placeholder="${email}"/>
                                 </div>
+                                <div class="checkbox">
+                                    <spring:message code='label.neighbor.requiresBilling' text="default text" var="billing"/>
+                                    <label><input type="checkbox" path="requiereFactura" id="requiereFactura" value="1">${billing}</label>
+                                </div>
+
                                 <button type="submit" class="btn btn-default" value="submit"><spring:message code="label.commons.submit" text="default text"/></button>
                             </form:form>
                         </div>

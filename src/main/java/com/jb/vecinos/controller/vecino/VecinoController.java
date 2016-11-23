@@ -39,12 +39,13 @@ public class VecinoController {
     public String addVecino(@ModelAttribute("SpringWeb")Vecino vecino,
                              ModelMap model) {
         vecino.setEsVisible(new Integer("1"));
-        vecino.setRequiereFactura(new Integer("1"));
+        //vecino.setRequiereFactura(new Integer("1"));
         vecino.setCasaRentada(new Integer("1"));
         vecino.setIdEstatus(new Integer("1"));
-        logger.info("insert to vecino");
+        logger.info("insert to vecino"+model.values());
         try
         {
+            logger.info("vecino requiere factura:"+vecino.getRequiereFactura());
             vecinoService.insertVecino(vecino);
         }
         catch (Exception e)
