@@ -111,6 +111,93 @@
                                     <form:input path="cp" class="form-control" id="cp" placeholder="${zipcode}"/>
                                 </div>
                                 <button type="submit" class="btn btn-default" value="submit"><spring:message
+                                        code="label.commons.next" text="default text"/></button>
+                            </form:form>
+                        </div>
+                        <!-- /. PAGE INNER  -->
+                    </div>
+                    <!-- /. PAGE WRAPPER  -->
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <spring:message code="label.admin.data.title" text="default text"/>
+                        </div>
+                        <div class="panel-body">
+                            <form:form method="POST" action="rootAddAdmin">
+                                <div class="form-group">
+                                    <spring:message code='label.admin.name' text="default text" var="name"/>
+                                    <form:label path="nombre"/>
+                                        ${name}</label>
+                                    <form:input path="nombre" class="form-control" id="nombre" placeholder="${name}"/>
+                                </div>
+                                <div class="form-group">
+                                    <spring:message code='label.colony.country.combo' text="default text"
+                                                    var="paisCombo"/>
+                                    <spring:message code='label.colony.country' text="default text" var="pais"/>
+                                    <spring:message code='label.commons.country.default.id' text="default text"
+                                                    var="paisDefault"/>
+                                    <label>${pais}</label>
+                                    <form:select class="form-control" path="idPais">
+                                        <option value="0">${paisCombo}</option>
+                                        <c:forEach items="${catalogoPais}" var="paisElemento">
+                                            <c:if test="${paisElemento.idPais == paisDefault}">
+                                                <option value="${paisElemento.idPais}"
+                                                        selected>${paisElemento.descPais}</option>
+                                            </c:if>
+                                            <c:if test="${paisElemento.idPais != paisDefault}">
+                                                <option value="${paisElemento.idPais}">${paisElemento.descPais}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </form:select>
+                                </div>
+
+                                <div class="form-group">
+                                    <spring:message code='label.colony.state.combo' text="default text" var="estadoCombo"/>
+                                    <spring:message code='label.colony.state' text="default text" var="estado"/>
+                                    <label>${estado}</label>
+                                    <form:select class="form-control" path="idEstado">
+                                        <option value="0">${estadoCombo}</option>
+                                        <c:forEach items="${catalogoEstado}" var="estadoElemento">
+                                            <option value="${estadoElemento.idEstado}">${estadoElemento.descEstado}</option>
+                                        </c:forEach>
+                                    </form:select>
+                                </div>
+
+                                <div class="form-group">
+                                    <spring:message code='label.colony.municipio.combo' text="default text"
+                                                    var="municipioCombo"/>
+                                    <spring:message code='label.colony.municipio' text="default text" var="municipio"/>
+                                    <label>${municipio}</label>
+                                    <form:select class="form-control" path="idMunicipio">
+                                        <option value="0" selected>${municipioCombo}</option>
+                                        <c:forEach items="${catalogoMunicipio}" var="municipioElemento">
+                                            <option value="${municipioElemento.idMunicipio}">${municipioElemento.descMunicipio}</option>
+                                        </c:forEach>
+                                    </form:select>
+                                </div>
+
+                                <div class="form-group">
+                                    <spring:message code='label.colony.zone.combo' text="default text"
+                                                    var="zonaCombo"/>
+                                    <spring:message code='label.colony.zone' text="default text" var="zona"/>
+                                    <label>${zona}</label>
+                                    <form:select class="form-control" path="idZona">
+                                        <option value="0" selected>${zonaCombo}</option>
+                                        <c:forEach items="${catalogoZona}" var="zonaElemento">
+                                            <option value="${zonaElemento.idZona}">${zonaElemento.descZona}</option>
+                                        </c:forEach>
+                                    </form:select>
+                                </div>
+
+                                <div class="form-group">
+                                    <spring:message code='label.colony.zipcode' text="default text" var="zipcode"/>
+                                    <form:label path="cp"/>
+                                        ${zipcode}</label>
+                                    <form:input path="cp" class="form-control" id="cp" placeholder="${zipcode}"/>
+                                </div>
+                                <button type="submit" class="btn btn-default" value="submit"><spring:message
                                         code="label.commons.submit" text="default text"/></button>
                             </form:form>
                         </div>
@@ -118,7 +205,11 @@
                     </div>
                     <!-- /. PAGE WRAPPER  -->
                 </div>
+
             </div>
+
+
+
         </div>
     </div>
 </div>

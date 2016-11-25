@@ -16,7 +16,7 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line"><spring:message code="label.admin.menu.neighbors" text="default text"/></h1>
+                    <h1 class="page-head-line"><spring:message code="label.admin.menu.neighbors" text="default text"/> userid: <%=request.getSession().getAttribute("userId")%></h1>
                 </div>
             </div>
             <div class="row">
