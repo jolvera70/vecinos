@@ -23,7 +23,7 @@
             <div class=" col-md-3 col-sm-3">
                 <div class="style-box-one Style-one-clr-one">
                     <a href="#">
-                        <span class="glyphicon glyphicon-headphones"></span>
+                        <span class="glyphicon glyphicon-user"></span>
                         <h5>Some Sample Text</h5>
                     </a>
                 </div>

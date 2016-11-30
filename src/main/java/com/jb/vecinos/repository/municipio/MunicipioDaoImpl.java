@@ -46,9 +46,12 @@ public class MunicipioDaoImpl implements MunicipioDao {
     {
         Municipio municipio = null;
         try
-        {
-            municipio = (Municipio) em.createQuery("select c from Municipio c where c.idMunicipio="+idMunicipio+
-                    " and c.idEstado="+idEstado+" order by c.descMunicipio")
+        {logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            logger.debug(idMunicipio+idEstado);
+            municipio = (Municipio) em.createQuery("select c from Municipio c where c.idMunicipio=?1" +
+                    " and c.idEstado=?2")
+                    .setParameter(1, idMunicipio)
+                    .setParameter(2, idEstado)
                     .getSingleResult();
         }
         catch(Exception e)

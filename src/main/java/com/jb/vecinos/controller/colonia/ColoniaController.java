@@ -78,10 +78,10 @@ public class ColoniaController {
     private List<Colonia> getInformacion(final List<Colonia> colonias) {
         for (final ListIterator<Colonia> i = colonias.listIterator(); i.hasNext();) {
             final Colonia colonia = i.next();
-            colonia.setPais(paisService.getPaisById(colonia.getIdPais()));
-            colonia.setEstado(estadoService.getEstadoById(colonia.getIdEstado()));
-            colonia.setZona(zonaService.getZonaById(colonia.getIdZona()));
-            colonia.setMunicipio(municipioService.getMunicipioByIdAndEstado(colonia.getIdMunicipio(),colonia.getIdEstado()));
+            colonia.setPais(paisService.getPaisById(colonia.getPais().getIdPais()));
+            colonia.setEstado(estadoService.getEstadoById(colonia.getEstado().getIdEstado()));
+            colonia.setZona(zonaService.getZonaById(colonia.getZona().getIdZona()));
+            colonia.setMunicipio(municipioService.getMunicipioByIdAndEstado(colonia.getMunicipio().getIdMunicipio(),colonia.getEstado().getIdEstado()));
             i.set(colonia);
         }
         return colonias;

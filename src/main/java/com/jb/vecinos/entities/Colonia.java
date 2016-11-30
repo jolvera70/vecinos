@@ -15,15 +15,23 @@ import java.util.Date;
 
 @Entity
 @Table(name = "colonia")
-public class Colonia extends ColoniaBase implements Serializable {
+public class Colonia implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String nombre;
-    private Integer idPais;
-    private Integer idEstado;
-    private Integer idMunicipio;
-    private Integer idZona;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idPais", nullable = false)
+    private Pais pais;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idEstado", nullable = false)
+    private Estado estado;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idMunicipio", nullable = false)
+    private Municipio municipio;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idZona", nullable = false)
+    private Zona zona;
     private String cp;
 
     //entity
@@ -32,37 +40,12 @@ public class Colonia extends ColoniaBase implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idColonia;
 
-
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Integer getIdPais() {
-        return idPais;
-    }
-
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
-    }
-
-    public Integer getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
-    }
-
-    public Integer getIdZona() {
-        return idZona;
-    }
-
-    public void setIdZona(Integer idZona) {
-        this.idZona = idZona;
     }
 
     public String getCp() {
@@ -81,11 +64,35 @@ public class Colonia extends ColoniaBase implements Serializable {
         this.idColonia = idColonia;
     }
 
-    public Integer getIdMunicipio() {
-        return idMunicipio;
+    public Pais getPais() {
+        return pais;
     }
 
-    public void setIdMunicipio(Integer idMunicipio) {
-        this.idMunicipio = idMunicipio;
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
+
+    public Zona getZona() {
+        return zona;
+    }
+
+    public void setZona(Zona zona) {
+        this.zona = zona;
     }
 }
